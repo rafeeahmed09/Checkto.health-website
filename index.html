@@ -9,12 +9,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Aladin&family=Alfa+Slab+One&family=Allura&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Aladin&family=Alfa+Slab+One&family=Allura&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -33,31 +34,47 @@
                 <li class="nav_li"><a href="#">Contact</a></li>
             </ul>
         </nav>
+        <div></div>
     </header>
     <main>
         <section class="hero-sec">
             <div class="hero-div">
                 <img class="heroLogo-img" src="Images/mental-health-high-resolution-logo-transparent.png">
                 <h2 class="hero-heading">Healing Starts Here</h2>
+                <div>
+                    <a href="tel:+91 8882609705" class="contact-icon">
+                        <i aria-hidden="true" class="fas fa-phone-alt"></i>
+                        <span class="elementor-button-text">Call Now</span>
+                    </a>
+
+                    <a href="whatsapp link here" class="contact-icon">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span class="elementor-button-text">Whatsapp</span>
+                    </a>
+                </div>
+
             </div>
             <div class="contact-div">
-                <h2 class="elementor-heading-title elementor-size-default">Let us contact you</h2>
+                <h2 class="contact-head">Let us contact you</h2>
                 <form class="contact-form">
-                    <input class="Frist-Name" aria-required="true" aria-invalid="false" placeholder="First Name"
-                        type="text">
-                    <input class="Last-Name" aria-required="true" aria-invalid="false" placeholder="Last Name"
-                        type="text">
-                    <input class="mobile" aria-required="true" aria-invalid="false" placeholder="Your Number"
-                        type="tel">
-                    <input class="email" aria-required="true" aria-invalid="false" placeholder="Your Email"
-                        type="email">
-                    <input class="desc" aria-required="true" aria-invalid="false" placeholder="What are you feeling"
-                        type="text">
+                    <input class="First-Name form-input" aria-required="true" aria-invalid="false"
+                        placeholder="First Name" type="text" name="First-Name">
+                    <input class="Last-Name form-input" aria-required="true" aria-invalid="false"
+                        placeholder="Last Name" type="text" name="Last-Name">
+                    <input class="mobile form-input" aria-required="true" aria-invalid="false" placeholder="Your Number"
+                        type="tel" name="mobile">
+                    <input class="email form-input" aria-required="true" aria-invalid="false" placeholder="Your Email"
+                        type="email" name="email">
+                    <input class="desc form-input" aria-required="true" aria-invalid="false"
+                        placeholder="What are you feeling" type="text" name="desc">
                     <button class="submit-btn">
                         Request a Call/Text back
                     </button>
                 </form>
             </div>
+        </section>
+        <section class="services">
+
         </section>
 
     </main>
