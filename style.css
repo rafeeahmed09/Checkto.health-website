@@ -20,7 +20,7 @@ body {
     background-color: var(--primary-color);
     color: aliceblue;
 }
-
+/* navbar */
 .navbar {
     height: 7rem;
     display: flex;
@@ -48,7 +48,7 @@ body {
     font-size: 1.3rem;
     text-transform: uppercase;
 }
-
+/*Hero */
 .hero-sec {
     height: 40vh;
     display: flex;
@@ -78,16 +78,31 @@ body {
     margin-top: 1rem;
     margin-bottom: 3rem;
 }
-
+/*icon*/
 .contact-icon {
     margin: 0.75rem;
     font-size: 1.5rem;
     text-decoration: none;
     color: var(--white-color);
     border: 0.2rem solid var(--white-color);
-    border-radius: 10rem;
+    border-radius: 6.9rem;
     padding: 1rem;
     text-transform: uppercase;
+}
+
+.contact-icon {
+    font-family: "Crimson Text", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.contact-icon:hover {
+    background-color: #ffdf39;
+    border-radius: 2rem 2rem;
+    transition: all ease 0.3s;
+    color: white;
+    cursor: pointer;
+
 }
 
 .contact-head {
@@ -103,7 +118,7 @@ body {
     margin-top: 35rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
+/*contact from */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -124,6 +139,19 @@ body {
     width: 35rem;
 }
 
+ /*.form-input:hover{
+    background-color: #ffdf39;
+    transition: all ease 0.2s;
+} */
+
+.contact-head {
+    font-family: "Crimson Text", serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+}
+/*submit*/
 .submit-btn {
     background-color: #245ccc;
     border-radius: 5rem;
@@ -137,7 +165,39 @@ body {
 
 /* services part */
 .services {
-    background-color: white;
-    height: 60vh;
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
 
+
+}
+
+.services-data {
+    margin: 4rem 4rem;
+    padding: 16rem .5rem;
+    margin-top: 8.5rem;
+    
+}
+
+.services-h2 h2 {
+    font-size: 38.5px;
+    font-weight: 500%;
+    justify-self: unset;
+
+    margin-top: 6.5rem;
+    margin-left: 12.5rem;
+    text-transform: uppercase;
+
+}
+
+.services-h2 h2 {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: norma;
+}
+
+.services-h2 p {
+    font-size: 29px;
+    font-weight: 100%;
+    margin-top: 1rem;
+    padding-left: 3rem;
 }
