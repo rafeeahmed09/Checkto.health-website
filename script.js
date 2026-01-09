@@ -1,18 +1,9 @@
- /*</div>
-                <div class="e-con-inner">
-                    <div class="e-con-Audio call">
-                        <h2 class="Audio">Audio Call</h2>
-                        <h2 class="Therapy">Therapy</h2>
-                        <h4 class="6min">₹6/min</h4>
-                    </div>
+const sidebar = document.querySelector('.sidebar');
 
-                    <div class="elementor-spacer-inner"></div>
-                </div>
+const openIcon = document.querySelector('.sidebar_ham').addEventListener("click", () => {
+    sidebar.style.display = "block";
+})
 
-
-                <div class="e-con-video call">
-
-                    <h2 class="Video">Video Call</h2>
-                </div>
-                <h2 class="Therapy">Therapy</h2>
-                <h4 class="7min">₹7/min</h4> */
+const closeIcon = document.querySelector('.sidebar_close').addEventListener("click", () => {
+    sidebar.style.display = "none";
+})
