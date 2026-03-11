@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>New Shop \u2013 Fresh Finds, Best Price</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0a0a0a;--surface:#111;--card:#181818;
+  --border:rgba(212,168,67,.18);--gold:#d4a843;--gold2:#f5c842;
+  --cream:#f5eed8;--muted:#777;--r:14px;--wa:#25D366;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:'Syne',sans-serif;overflow-x:hidden}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:#111}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 28px;
+  background:rgba(10,10,10,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.logo{
+  font-family:'Bebas Neue',sans-serif;font-size:1.9rem;
+  letter-spacing:4px;color:var(--gold);text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+}
+.logo-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--gold);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.5}}
+.nav-cta{
+  font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink);background:var(--gold);padding:10px 22px;
+  border-radius:50px;text-decoration:none;border:none;
+  transition:background .2s,transform .2s;
+}
+.nav-cta:hover{background:var(--gold2);transform:scale(1.04)}
+
+/* HERO */
+#hero{position:relative;height:100vh;min-height:560px;overflow:hidden}
+.slides{display:flex;height:100%;transition:transform .95s cubic-bezier(.77,0,.18,1)}
+.slide{
+  flex:0 0 100%;height:100%;
+  background-size:cover;background-position:center;position:relative;
+}
+.slide::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.35) 55%,rgba(212,168,67,.06) 100%);
+}
+.hero-content{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:100px 7vw 60px;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);
+  background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.3);
+  padding:6px 18px;border-radius:50px;width:fit-content;margin-bottom:22px;
+  animation:fadeUp .7s .2s both;
+}
+.hero-eyebrow span{width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block}
+.hero-h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.5rem,11vw,8.5rem);line-height:.93;letter-spacing:1px;
+  color:#fff;animation:fadeUp .7s .4s both;
+}
+.hero-h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold)}
+.hero-sub{
+  margin-top:18px;font-size:clamp(.88rem,2.2vw,1.12rem);
+  color:rgba(245,238,216,.65);font-weight:400;max-width:400px;line-height:1.65;
+  animation:fadeUp .7s .6s both;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px;animation:fadeUp .7s .8s both}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--gold);color:var(--ink);font-size:.82rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;padding:15px 34px;
+  border-radius:50px;text-decoration:none;border:none;
+  transition:background .2s,transform .2s,box-shadow .2s;
+}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-3px);box-shadow:0 10px 36px rgba(212,168,67,.35)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;background:transparent;
+  color:var(--cream);font-size:.82rem;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;padding:15px 30px;border-radius:50px;
+  border:1px solid rgba(245,238,216,.3);text-decoration:none;
+  transition:border-color .2s,color .2s;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+.hero-dots{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  display:flex;gap:8px;z-index:5;
+}
+.h-dot{
+  width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);
+  border:none;cursor:pointer;transition:background .3s,width .3s,border-radius .3s;padding:0;
+}
+.h-dot.active{background:var(--gold);width:28px;border-radius:4px}
+.scroll-hint{
+  position:absolute;bottom:30px;right:36px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);z-index:5;
+}
+.scroll-bar{
+  width:1px;height:44px;
+  background:linear-gradient(to bottom,rgba(212,168,67,.7),transparent);
+  animation:scrollBounce 2s ease-in-out infinite;
+}
+@keyframes scrollBounce{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.4);opacity:.4}}
+.slide-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  background:rgba(0,0,0,.35);border:1px solid rgba(212,168,67,.3);
+  color:var(--gold);width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;cursor:pointer;transition:background .2s;
+}
+.slide-arrow:hover{background:var(--gold);color:var(--ink)}
+.arrow-prev{left:20px}
+.arrow-next{right:20px}
+
+/* PRODUCTS */
+#products{background:var(--surface)}
+.products-header{
+  padding:72px 36px 40px;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;
+}
+.section-label{font-size:.68rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,6vw,4.5rem);letter-spacing:2px;line-height:1}
+.section-title em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold)}
+.carousel-btns{display:flex;gap:10px}
+.c-btn{
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--border);
+  background:transparent;color:var(--gold);font-size:1.2rem;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:background .2s,border-color .2s;
+}
+.c-btn:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.track-wrap{overflow:hidden;padding:0 36px 16px}
+.product-track{
+  display:flex;gap:20px;overflow-x:auto;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;scroll-behavior:smooth;
+}
+.product-track::-webkit-scrollbar{display:none}
+
+/* Product Card */
+.p-card{
+  flex:0 0 272px;scroll-snap-align:start;background:var(--card);
+  border-radius:var(--r);border:1px solid var(--border);overflow:hidden;
+  position:relative;transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.p-card:hover{transform:translateY(-7px);border-color:rgba(212,168,67,.45);box-shadow:0 24px 56px rgba(0,0,0,.55)}
+.badge{
+  position:absolute;top:12px;left:12px;z-index:2;background:var(--gold);color:var(--ink);
+  font-size:.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:4px 11px;border-radius:50px;
+}
+.p-img{width:100%;height:208px;object-fit:cover;background:#0d0d0d}
+.p-body{padding:18px 18px 20px}
+.p-name{font-size:1rem;font-weight:700;margin-bottom:5px}
+.p-price{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;color:var(--gold);letter-spacing:1px;margin-bottom:4px}
+.p-phone{font-size:.76rem;color:var(--muted);margin-bottom:16px;display:flex;align-items:center;gap:5px}
+.add-cart-btn{
+  width:100%;padding:11px;border-radius:10px;background:transparent;
+  border:1px solid var(--gold);color:var(--gold);
+  font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  transition:background .2s,color .2s,transform .15s;
+}
+.add-cart-btn:hover,.add-cart-btn.in{background:var(--gold);color:var(--ink);transform:scale(1.02)}
+
+/* Progress bar */
+.slide-progress{height:2px;background:rgba(212,168,67,.12);margin:8px 36px 52px;border-radius:2px;overflow:hidden}
+.slide-progress-bar{height:100%;width:0%;background:var(--gold);border-radius:2px;transition:width .05s linear}
+
+/* ORDER SECTION */
+#order{background:var(--ink);padding:72px 20px 90px}
+.order-inner{max-width:660px;margin:0 auto}
+.order-header{text-align:center;padding-bottom:40px}
+.order-header p{color:var(--muted);font-size:.85rem;margin-top:10px;line-height:1.7}
+
+/* Cart Box */
+.cart-box{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--r);padding:24px;margin-bottom:28px;min-height:88px;
+}
+.cart-empty{color:var(--muted);font-size:.85rem;text-align:center;padding:18px 0;letter-spacing:.5px}
+.cart-count{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px}
+.cart-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);
+  font-size:.88rem;animation:fadeUp .3s both;
+}
+.cart-item:last-child{border-bottom:none}
+.cart-item-name{font-weight:600;color:var(--cream)}
+.cart-item-sub{font-size:.75rem;color:var(--muted);margin-top:2px}
+.cart-item-remove{
+  background:none;border:none;color:#e55;font-size:1rem;
+  cursor:pointer;padding:4px 8px;border-radius:6px;
+  transition:background .2s;flex-shrink:0;
+}
+.cart-item-remove:hover{background:rgba(229,85,85,.12)}
+
+/* Order Form */
+.order-form{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:32px}
+.form-title{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;letter-spacing:2px;color:var(--cream);margin-bottom:6px}
+.form-sub{font-size:.8rem;color:var(--muted);margin-bottom:28px;line-height:1.6}
+.field{margin-bottom:18px}
+.field label{
+  display:block;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px;font-weight:600;
+}
+.field input,.field textarea,.field select{
+  width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border);
+  border-radius:10px;color:var(--cream);font-family:'Syne',sans-serif;
+  font-size:.92rem;padding:13px 16px;outline:none;
+  transition:border-color .2s,background .2s;
+  -webkit-appearance:none;appearance:none;
+}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted)}
+.field input:focus,.field textarea:focus{border-color:rgba(212,168,67,.5);background:rgba(212,168,67,.04)}
+.field textarea{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.send-btn{
+  width:100%;margin-top:8px;padding:16px;border-radius:12px;
+  background:var(--gold);color:var(--ink);
+  font-family:'Syne',sans-serif;font-size:.88rem;font-weight:800;
+  letter-spacing:2.5px;text-transform:uppercase;border:none;
+  transition:background .2s,transform .2s,box-shadow .2s;
+}
+.send-btn:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 10px 32px rgba(212,168,67,.32)}
+.send-btn:disabled{opacity:.5;transform:none;cursor:not-allowed}
+.form-note{font-size:.72rem;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6}
+.success-msg{
+  display:none;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);
+  color:#25d366;border-radius:10px;padding:14px 18px;
+  font-size:.85rem;text-align:center;margin-top:16px;line-height:1.6;
+}
+.err-msg{
+  display:none;background:rgba(229,85,85,.1);border:1px solid rgba(229,85,85,.3);
+  color:#e55;border-radius:10px;padding:12px 16px;
+  font-size:.82rem;margin-top:12px;
+}
+
+/* FOOTER */
+footer{
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:36px 28px;display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:14px;
+}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:4px;color:var(--gold)}
+.footer-copy{font-size:.72rem;color:var(--muted);letter-spacing:1px}
+.footer-mail{font-size:.75rem;color:var(--gold);text-decoration:none;letter-spacing:1px}
+.footer-mail:hover{text-decoration:underline}
+
+/* WHATSAPP */
+.wa-float{
+  position:fixed;bottom:28px;right:24px;z-index:500;
+  width:58px;height:58px;border-radius:50%;background:var(--wa);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 24px rgba(37,211,102,.4);text-decoration:none;
+  transition:transform .25s,box-shadow .25s;animation:waIn .5s 1.2s both;
+}
+.wa-float:hover{transform:scale(1.12);box-shadow:0 10px 36px rgba(37,211,102,.55)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+.wa-tooltip{
+  position:absolute;right:68px;background:#fff;color:#111;
+  font-size:.72rem;font-weight:700;letter-spacing:1px;
+  white-space:nowrap;padding:6px 14px;border-radius:50px;
+  box-shadow:0 4px 18px rgba(0,0,0,.2);
+  opacity:0;transform:translateX(8px);
+  transition:opacity .2s,transform .2s;pointer-events:none;
+}
+.wa-float:hover .wa-tooltip{opacity:1;transform:translateX(0)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes waIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  nav{padding:14px 18px}
+  .logo{font-size:1.5rem}
+  .hero-content{padding:90px 22px 50px}
+  .hero-h1{font-size:3.2rem}
+  .products-header{padding:52px 20px 28px;flex-direction:column;align-items:flex-start}
+  .track-wrap{padding:0 20px 12px}
+  .slide-progress{margin:4px 20px 40px}
+  .form-row{grid-template-columns:1fr}
+  footer{flex-direction:column;align-items:flex-start}
+  .scroll-hint,.slide-arrow{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#"><span class="logo-dot"></span>NEW SHOP</a>
+  <a class="nav-cta" href="#products">Shop Now</a>
+</nav>
+
+<!-- HERO SLIDER -->
+<section id="hero">
+  <div class="slides" id="heroSlides">
+    <div class="slide" style="background-image:url('https://i.ibb.co/KpKdjQGL/d395bb804b521ea753d3066a010b7cbf.jpg')"></div>
+    <div class="slide" style="background-image:url('https://i.ibb.co/fd3tmt0m/89703eda25fbbc8244562f5314719155.jpg')"></div>
+    <div class="slide" style="background-image:url('https://i.ibb.co/RG7HKjy2/MUSCLE-MOOSE-8993-Recovered-copy-scaled.jpg')"></div>
+    <div class="slide" style="background-image:url('https://i.ibb.co/0RRCgCjh/667c516ff83a3c815973676e-1-Before-Mobile.webp')"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span></span> Welcome to New Shop</div>
+    <h1 class="hero-h1">FRESH FINDS<br><em>Best Price,</em><br>EVERY DAY</h1>
+    <p class="hero-sub">Quality products curated just for you \u2014 browse, pick, and order in seconds.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#products">
+        Shop Now
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a class="btn-ghost" href="#order">View Cart</a>
+    </div>
+  </div>
+  <button class="slide-arrow arrow-prev" onclick="moveSlide(-1)" aria-label="Previous">&#8592;</button>
+  <button class="slide-arrow arrow-next" onclick="moveSlide(1)" aria-label="Next">&#8594;</button>
+  <div class="hero-dots" id="heroDots"></div>
+  <div class="scroll-hint">
+    <div class="scroll-bar"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-header">
+    <div>
+      <div class="section-label">\u25cf Our Collection</div>
+      <h2 class="section-title">FEATURED <em>Products</em></h2>
+    </div>
+    <div class="carousel-btns">
+      <button class="c-btn" onclick="scrollTrack(-1)" aria-label="Scroll left">&#8592;</button>
+      <button class="c-btn" onclick="scrollTrack(1)" aria-label="Scroll right">&#8594;</button>
+    </div>
+  </div>
+  <div class="track-wrap">
+    <div class="product-track" id="productTrack"></div>
+  </div>
+  <div class="slide-progress"><div class="slide-progress-bar" id="progressBar"></div></div>
+</section>
+
+<!-- ORDER FORM -->
+<section id="order">
+  <div class="order-inner">
+    <div class="order-header">
+      <div class="section-label">\u25cf Ready to Order?</div>
+      <h2 class="section-title">YOUR <em>Cart</em></h2>
+      <p>Add items from above, fill in your details below, and send your order instantly.</p>
+    </div>
+
+    <!-- Cart Display -->
+    <div id="cartDisplay" class="cart-box">
+      <p class="cart-empty">\ud83d\uded2 Your cart is empty \u2014 add products above!</p>
+    </div>
+
+    <!-- Form -->
+    <div class="order-form">
+      <div class="form-title">Customer Details</div>
+      <p class="form-sub">We'll receive your order with
